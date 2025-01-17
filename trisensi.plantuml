@@ -1,0 +1,124 @@
+@startuml
+
+class Siswa {
+  +id: String
+  -nis: String
+  -qr_code: String
+  -username: String
+  -password: String
+  -nama: String
+  -email: String
+  -alamat: String
+  -no_hp: String
+  -tempat_lahir: String
+  -tanggal_lahir: Date
+  -created_at: Timestamp
+  -update_at: Timestamp
+}
+
+class Guru {
+  +id: String
+  -nip: String
+  -nuptk: String
+  -username: String
+  -password: String
+  -nama: String
+  -email: String
+  -alamat: String
+  -no_hp: String
+  -tempat_lahir: String
+  -tanggal_lahir: Date
+  -created_at: Timestamp
+  -update_at: Timestamp
+}
+
+class PetugasPiket {
+  +id: String
+  -nip: String
+  -username: String
+  -password: String
+  -nama: String
+  -email: String
+  -alamat: String
+  -no_hp: String
+  -tempat_lahir: String
+  -tanggal_lahir: Date
+  -created_at: Timestamp
+  -update_at: Timestamp
+}
+
+class Presensi {
+  +id: String
+  -id_siswa: String
+  -id_petugaspiket: String
+  -id_statuspresensi: String
+  -created_at: Timestamp
+  -update_at: Timestamp
+}
+
+class StatusPresensi {
+  +id: String
+  -id_semester: String
+  -status: String
+  -created_at: Timestamp
+  -update_at: Timestamp
+}
+
+class TataUsaha {
+  +id: String
+  -username: String
+  -password: String
+  -nama: String
+  -email: String
+  -alamat: String
+  -no_hp: String
+  -tempat_lahir: String
+  -tanggal_lahir: Date
+  -created_at: Timestamp
+  -update_at: Timestamp
+}
+
+class MataPelajaran {
+  +id: String
+  -id_guru: String
+  -id_presensi: String
+  -id_kelas: String
+  -id_semester: String
+  -nama_mapel: String
+  -created_at: Timestamp
+  -update_at: Timestamp
+}
+
+class Kelas {
+  +id: String
+  -nama_kelas: String
+  -created_at: Timestamp
+  -update_at: Timestamp
+}
+
+class Semester {
+  +id: String
+  -semester: String
+  -created_at: Timestamp
+  -update_at: Timestamp
+}
+
+class SuperAdmin {
+  +id: String
+  -username: String
+  -password: String
+  -nama: String
+  -email: String
+  -created_at: Timestamp
+  -update_at: Timestamp
+}
+
+Siswa "1" -- "0..*" Presensi
+PetugasPiket "1" -- "0..*" Presensi
+StatusPresensi "1" -- "0..*" Presensi
+Guru "1" -- "0..*" MataPelajaran
+Presensi "0..*" -- "1" MataPelajaran
+Kelas "1" -- "0..*" MataPelajaran
+Semester "1" -- "0..*" MataPelajaran
+
+@enduml
